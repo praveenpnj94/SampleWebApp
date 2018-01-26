@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="100" fxFlex.gt-md="300px" fxFlex.gt-sm="50">
+    <mat-card class="profile-sidebar mb-1 pb-0" style="width: 1000px;margin-left: 180px;">
+      <div class="propic text-center">
+        <img src="assets/images/sq-face-220.jpg" alt="" style="width: 120px">
+      </div>
+      <div class="profile-title text-center mb-1">
+        <div class="main-title">Jhone <b>Doe</b></div>
+        <div class="subtitle mb-05">Big Data Expert</div>
+        <div class="text-muted">Hi I'm Jhone, sit amet consectetur adipisicing elit. Aperiam repellendus nam perspiciatis.</div>
+      </div>
+      <div class="profile-actions text-center mb-1">
+        <button mat-raised-button color="primary">Message</button>
+        <button mat-raised-button color="accent">Follow</button>
+      </div>
+    </mat-card>
+    <!-- Contact Information -->
+    <mat-card class="default" style="width: 1000px;margin-left: 180px;">
+      <mat-card-title>Contact Information</mat-card-title>
+      <mat-card-content class="pt-0">
+        <mat-list>
+          <mat-list-item><mat-icon class="mr-1">public</mat-icon> www.mhrafi.com</mat-list-item>
+          <mat-list-item><mat-icon class="mr-1">email</mat-icon> example@gmail.com</mat-list-item>
+          <mat-list-item><mat-icon class="mr-1">phone</mat-icon> 8801822778800</mat-list-item>
+          <mat-list-item><mat-icon class="mr-1">add_location</mat-icon> SUST, Sylhet, BD</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+<!-- Profile Views -->
+  <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="calc(100% - 300px)">
+    <router-outlet></router-outlet>
+  </div>
+</div>

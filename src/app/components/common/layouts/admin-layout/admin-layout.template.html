@@ -1,0 +1,40 @@
+<mat-sidenav-container class="app-side-nav-container mat-drawer-transition">
+  <!-- Main side navigation -->
+  <!-- <mat-sidenav #sidenav [opened]="!isNavOver()" [mode]="isNavOver() ? 'over' : 'side'" class="sidebar-panel">
+    <div id="scroll-area" class="navigation-hold" fxLayout="column">
+
+      <div class="branding default-bg">
+          <img src="assets/images/logo.png" alt="" class="app-logo">
+
+          <img 
+          src="assets/images/logo-text-white.png" 
+          alt="" 
+          class="app-logo-text"
+          *ngIf="themeService.activatedThemeName.indexOf('dark') !== -1">
+          <img 
+          src="assets/images/logo-text.png" 
+          alt="" 
+          class="app-logo-text"
+          *ngIf="themeService.activatedThemeName.indexOf('dark') === -1">
+      </div>
+    </div>
+  </mat-sidenav> -->
+
+  <!-- Top Bar -->
+  <topbar></topbar>
+
+  <!-- App content -->
+  <div class="rightside-content-hold">
+    <div class="view-loader" *ngIf="isModuleLoading">
+      <div class="spinner">
+        <div class="double-bounce1 mat-bg-accent"></div>
+        <div class="double-bounce2 mat-bg-primary"></div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
+
+<!-- Only for demo purpose -->
+<!-- Remove this from your production version -->
+<!-- <app-customizer [breadcrumb]="breadcrumb"></app-customizer> -->

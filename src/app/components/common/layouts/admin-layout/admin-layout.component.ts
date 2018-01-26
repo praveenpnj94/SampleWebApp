@@ -1,0 +1,55 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {Router, NavigationEnd, RouteConfigLoadStart, RouteConfigLoadEnd, ResolveStart, ResolveEnd } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
+import { MatSidenav } from '@angular/material';
+import { ThemeService } from '../../../../services/theme/theme.service';
+// import * as Ps from 'perfect-scrollbar';
+import * as domHelper from '../../../../helpers/dom.helper';
+
+@Component({
+  selector: 'app-admin-layout',
+  templateUrl: './admin-layout.template.html'
+})
+export class AdminLayoutComponent implements OnInit {
+  private isMobile;
+  isSidenavOpen: Boolean = false;
+  isModuleLoading: Boolean = false;
+  moduleLoaderSub: Subscription;
+  @ViewChild(MatSidenav) private sideNave: MatSidenav;
+
+  constructor(
+    private router: Router,
+    public themeService: ThemeService
+  ) {
+  }
+  ngOnInit() {
+    // Initialize Perfect scrollbar for sidenav
+    let navigationHold = document.getElementById('scroll-area');
+    // Ps.initialize(navigationHold, {
+    //   suppressScrollX: true
+    // });
+    
+    // FOR MODULE LOADER FLAG
+    this.moduleLoaderSub = this.router.events.subscribe(event => {
+      if (event instanceof RouteConfigLoadStart || event instanceof ResolveStart) {
+        this.isModuleLoading = true;
+      }
+      if (event instanceof RouteConfigLoadEnd || event instanceof ResolveEnd) {
+        this.isModuleLoading = false;
+      }
+    });
+  }
+  ngOnDestroy() {
+    this.moduleLoaderSub.unsubscribe();
+  }
+  isNavOver() {
+    let isSm = window.matchMedia(`(max-width: 960px)`).matches;
+
+    // Disable collapsed menu in small screen
+    if (isSm && domHelper.hasClass(document.body, 'collapsed-menu')) {
+      domHelper.removeClass(document.body, 'collapsed-menu');
+    }
+    return isSm;
+  }
+}
